@@ -34,7 +34,7 @@ data_option = st.sidebar.radio("Choose Data Source:", ("Generate Synthetic Data"
 
 if data_option == "Generate Synthetic Data":
     
-    df = pd.read_csv('C:/Users/ay272/OneDrive/Documents/Projects/project1/data/diabetes_preprocessed.csv')
+    df = pd.read_csv('././data/diabetes_preprocessed.csv')
 
     y = df["Outcome"]
     X = df.drop(columns=["Outcome"])
@@ -92,7 +92,7 @@ else:
     selected_models = []  # We won't use this if best_of_five is Yes
 
 # ---Logistic Regression---
-lrModel = joblib.load("./default_models/lrModel.pkl")
+lrModel = joblib.load("/default_models/lrModel.pkl")
 best_lrModel = joblib.load("./best_models/best_lrModel.pkl")
 
 #---Decision Tree---
