@@ -92,27 +92,27 @@ else:
     selected_models = []  # We won't use this if best_of_five is Yes
 
 # ---Logistic Regression---
-lrModel = joblib.load("/default_models/lrModel.pkl")
-best_lrModel = joblib.load("./best_models/best_lrModel.pkl")
+lrModel = joblib.load("././data/default_models/lrModel.pkl")
+best_lrModel = joblib.load("././data/best_models/best_lrModel.pkl")
 
 #---Decision Tree---
-dtModel = joblib.load("./default_models/dtModel.pkl")
-best_dtModel = joblib.load("./best_models/best_dtModel.pkl")
+dtModel = joblib.load("././data/default_models/dtModel.pkl")
+best_dtModel = joblib.load("././data/best_models/best_dtModel.pkl")
 
 #---Random Forest---
-rf_Model = joblib.load("./default_models/rfModel.pkl")
-best_rfModel = joblib.load("./best_models/best_rfModel.pkl")
+rf_Model = joblib.load("././data/default_models/rfModel.pkl")
+best_rfModel = joblib.load("././data/best_models/best_rfModel.pkl")
 
 #---Support Vector Machines Classifier---
-svcModel = joblib.load("./default_models/svcModel.pkl")
-best_svcModel = joblib.load("./best_models/best_svcModel.pkl")
+svcModel = joblib.load("././data/default_models/svcModel.pkl")
+best_svcModel = joblib.load("././data/best_models/best_svcModel.pkl")
 
 #---Gradient Boosting Classifier---
-gbModel = joblib.load("./default_models/gbModel.pkl")
-best_gbModel = joblib.load("./best_models/best_gbModel.pkl")
+gbModel = joblib.load("././data/default_models/gbModel.pkl")
+best_gbModel = joblib.load("././data/best_models/best_gbModel.pkl")
 
 #---best_model_overall---
-best_model_overall = joblib.load("./best_models/best_model.pkl")
+best_model_overall = joblib.load("././data/best_models/best_model.pkl")
 
 models = {}
 if best_of_five == "Yes":
