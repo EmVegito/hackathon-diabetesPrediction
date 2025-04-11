@@ -34,7 +34,7 @@ data_option = st.sidebar.radio("Choose Data Source:", ("Generate Synthetic Data"
 
 if data_option == "Generate Synthetic Data":
     
-    df = pd.read_csv('diabetes_preprocessed.csv')
+    df = pd.read_csv('C:/Users/ay272/OneDrive/Documents/Projects/project1/app/diabetes_preprocessed.csv')
 
     y = df["Outcome"]
     X = df.drop(columns=["Outcome"])
