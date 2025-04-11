@@ -1,0 +1,14 @@
+# Core
+streamlit
+pandas
+numpy
+
+# Machine Learning Models
+scikit-learn
+
+# Visualization
+matplotlib
+seaborn
+
+# for saving and loading models
+joblib
