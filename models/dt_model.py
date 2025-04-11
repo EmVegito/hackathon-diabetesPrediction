@@ -12,12 +12,12 @@ from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, classifi
 import warnings
 warnings.filterwarnings('ignore')
 
-file_path = "./data/processed_data.csv"
+file_path = "./data/diabetes_preprocessed.csv"
 
 df = pd.read_csv(file_path)
 
-y = df['Fraud_Label']
-X = df.drop(columns=['Fraud_Label'])
+y = df['Outcome']
+X = df.drop(columns=['Outcome'])
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 print(f"Train set size: {X_train.shape[0]}, Test set size: {X_test.shape[0]}")
@@ -28,6 +28,8 @@ dt_model = DecisionTreeClassifier(random_state=42)
 
 dt_model.fit(X_train, y_train)
 print('\nDecision Tree Classifier - Training complete!')
+
+#save_model(dt_model, filename='dtModel.pkl')
 
 #Evaluate on the training set
 y_pred = dt_model.predict(X_test)
@@ -55,13 +57,12 @@ plt.xlabel('Predicted Label')
 plt.show()
 
 param_grid = {
-    'criterion': ['gini'],
+    'criterion': ['gini', 'entropy', 'log_loss'],
     'splitter': ['best', 'random'],
     'max_depth': [None, 5, 10,],
     'min_samples_split': [2, 5],
     'min_samples_leaf': [1, 2,],
-    'max_features': [None, 'sqrt', 'log2'],
-    'ccp_alpha': [0.0, 0.001, 0.01, 0.1]        # Pruning parameter
+    'ccp_alpha': [0.0, 0.001, 0.01, 0.1],
 }
 
 print("\n=== Stratified K-Fold Cross-Validation ===")
@@ -72,7 +73,7 @@ grid_search = GridSearchCV(
     estimator=dt_model,
     param_grid=param_grid,
     cv=cv,
-    scoring='average_precision',  # Better for imbalanced datasets
+    scoring='average_precision',
     n_jobs=-1,
     verbose=1
 )
@@ -134,46 +135,4 @@ plt.show()
 best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 
-#save_model(dt_model, filename='fraud_detection_dtModel.joblib')
-
-y_prob_best = best_model.predict_proba(X_test)[:, 1]
-
-# Calculate precision and recall for different thresholds
-precision, recall, thresholds = precision_recall_curve(y_test, y_prob)
-
-# Calculate F1 score for each threshold
-f1_scores = 2 * (precision[:-1] * recall[:-1]) / (precision[:-1] + recall[:-1] + 1e-10)
-
-# Find threshold with best F1 score
-best_idx = np.argmax(f1_scores)
-best_threshold = thresholds[best_idx]
-best_f1 = f1_scores[best_idx]
-
-print(f"Optimal threshold: {best_threshold:.4f} (F1: {best_f1:.4f})")
-
-# Plot precision-recall curve
-plt.figure(figsize=(10, 6))
-plt.plot(recall, precision, label=f'PR Curve (AUC = {auc(recall, precision):.4f})')
-plt.axvline(x=recall[best_idx], color='r', linestyle='--', 
-            label=f'Best threshold: {best_threshold:.4f}')
-plt.xlabel('Recall')
-plt.ylabel('Precision')
-plt.title('Precision-Recall Curve')
-plt.legend()
-plt.grid(True, alpha=0.3)
-plt.show()
-
-# Apply best threshold and show metrics
-y_pred_optimized = (y_prob >= best_threshold).astype(int)
-
-print("\nClassification report with optimized threshold:")
-print(classification_report(y_test, y_pred_optimized))
-
-# Plot confusion matrix
-plt.figure(figsize=(8, 6))
-cm = confusion_matrix(y_test, y_pred_optimized)
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', cbar=False)
-plt.title('Confusion Matrix with Optimized Threshold')
-plt.ylabel('True Label')
-plt.xlabel('Predicted Label')
-plt.show()
+save_model(best_model, filename='./app/best_models/best_dtModel.pkl')

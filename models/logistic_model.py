@@ -11,17 +11,19 @@ from sklearn.metrics import roc_auc_score, precision_recall_curve, auc, classifi
 import warnings
 warnings.filterwarnings('ignore')
 
-file_path = "./data/processed_data.csv"
+file_path = "./data/diabetes_preprocessed.csv"
 
 df = pd.read_csv(file_path)
 
-y = df['Fraud_Label']
-X = df.drop(columns=['Fraud_Label'])
+y = df['Outcome']
+X = df.drop(columns=['Outcome'])
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 print(f"Train set size: {X_train.shape[0]}, Test set size: {X_test.shape[0]}")
 
-lr_model = LogisticRegression(random_state=42, max_iter=1000)
+lr_model = LogisticRegression(random_state=42)
+
+#save_model(lr_model, filename='lrModel.pkl')
 
 lr_model.fit(X_train, y_train)
 
@@ -50,20 +52,21 @@ plt.xlabel('Predicted Label')
 plt.show()
 
 param_grid = {
-    'C': [0.01, 0.1, 1, 10, 100],
-    'class_weight': [None, 'balanced'],
-    'solver': ['liblinear', 'saga']
+    'C': [0.01, 0.1, 1, 10],
+    'class_weight': ['balanced'],
+    'solver': ['liblinear', 'saga'],
+    'max_iter': [100, 200, 300],
 }
 
 print("\n=== Stratified K-Fold Cross-Validation ===")
-cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv = StratifiedKFold(n_splits=3, shuffle=True, random_state=42)
     
 # Create grid search
 grid_search = GridSearchCV(
     estimator=lr_model,
     param_grid=param_grid,
     cv=cv,
-    scoring='average_precision',  # Better for imbalanced datasets
+    scoring='roc_auc',
     n_jobs=-1,
     verbose=1
 )
@@ -126,4 +129,4 @@ best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 print(best_model)
 
-save_model(best_model, filename='fraud_detection_lrModel.pkl')
+save_model(best_model, filename='./app/best_models/best_lrModel.pkl')
