@@ -25,7 +25,7 @@ print(f"Train set size: {X_train.shape[0]}, Test set size: {X_test.shape[0]}")
 gb_model = GradientBoostingClassifier(random_state=42)
 gb_model.fit(X_train, y_train)
 
-save_model(gb_model, filename='gbModel.pkl')
+#save_model(gb_model, filename='./data/default_models/gbModel.pkl')
 
 y_pred = gb_model.predict(X_test)
 y_prob = gb_model.predict_proba(X_test)[:, 1]
@@ -132,4 +132,4 @@ best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 print(best_model)
 
-save_model(best_model, filename='./app/best_models/best_gbModel.pkl')
+save_model(best_model, filename='./data/best_models/best_gbModel.pkl')

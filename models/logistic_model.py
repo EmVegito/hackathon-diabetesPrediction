@@ -23,7 +23,7 @@ print(f"Train set size: {X_train.shape[0]}, Test set size: {X_test.shape[0]}")
 
 lr_model = LogisticRegression(random_state=42)
 
-#save_model(lr_model, filename='lrModel.pkl')
+#save_model(lr_model, filename='./data/default_models/lrModel.pkl')
 
 lr_model.fit(X_train, y_train)
 
@@ -129,4 +129,4 @@ best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 print(best_model)
 
-save_model(best_model, filename='./app/best_models/best_lrModel.pkl')
+save_model(best_model, filename='./data/best_models/best_lrModel.pkl')

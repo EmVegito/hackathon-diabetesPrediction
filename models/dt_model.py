@@ -29,7 +29,7 @@ dt_model = DecisionTreeClassifier(random_state=42)
 dt_model.fit(X_train, y_train)
 print('\nDecision Tree Classifier - Training complete!')
 
-#save_model(dt_model, filename='dtModel.pkl')
+#save_model(dt_model, filename='./data/default_models/dtModel.pkl')
 
 #Evaluate on the training set
 y_pred = dt_model.predict(X_test)
@@ -135,4 +135,4 @@ plt.show()
 best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 
-save_model(best_model, filename='./app/best_models/best_dtModel.pkl')
+save_model(best_model, filename='./data/best_models/best_dtModel.pkl')

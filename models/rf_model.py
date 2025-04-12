@@ -26,7 +26,7 @@ rf_model = RandomForestClassifier(random_state=42, n_jobs=-1)
 
 rf_model.fit(X_train, y_train)
 
-#save_model(rf_model, filename='rfModel.pkl')
+#save_model(rf_model, filename='./data/default_models/rfModel.pkl')
 
 y_pred = rf_model.predict(X_test)
 y_prob = rf_model.predict_proba(X_test)[:, 1]
@@ -134,4 +134,4 @@ best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 print(best_model)
 
-save_model(best_model, filename='./app/best_models/best_rfModel.pkl')
+save_model(best_model, filename='./data/best_models/best_rfModel.pkl')

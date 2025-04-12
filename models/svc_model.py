@@ -25,7 +25,7 @@ svc_model = SVC(random_state=42, probability=True)
 
 svc_model.fit(X_train, y_train)
 
-#save_model(svc_model, filename='svcModel.pkl')
+#save_model(svc_model, filename='./data/default_models/svcModel.pkl')
 
 y_pred = svc_model.predict(X_test)
 y_prob = svc_model.predict_proba(X_test)[:, 1]
@@ -133,4 +133,4 @@ best_model = grid_search.best_estimator_
 best_model.fit(X_train, y_train)
 print(best_model)
 
-save_model(best_model, filename='./app/best_models/best_svcModel.pkl')
+save_model(best_model, filename='./data/best_models/best_svcModel.pkl')
