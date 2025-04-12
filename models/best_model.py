@@ -1,7 +1,7 @@
 import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import VotingClassifier
-from sklearn.metrics import roc_auc_score
+from sklearn.metrics import roc_auc_score, accuracy_score
 import pandas as pd
 import warnings
 from util import save_model
@@ -47,7 +47,7 @@ best_name = None
 
 for name, model in models.items():
     model.fit(X_train, y_train)
-    y_prob = model.predict_proba(X_test)[:, 1]
+    y_prob = model.predict_proba(X_test)[:,1]
     roc_auc = roc_auc_score(y_test, y_prob)
     print(f"{name} ROC AUC Score: {roc_auc:.4f}")
     
