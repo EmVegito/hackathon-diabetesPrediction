@@ -3,7 +3,7 @@
 # Contributors
 ## 1- Amandeep Yadav (*Team Lead*)
 ## 2- Aditya Chug (*Team Member*)
-## 2- Ruchit Vaze (*Team Member*)
+## 3- Ruchit Vaze (*Team Member*)
 
 ## Overview
 This dashboard provides an interactive interface for predicting diabetes risk using multiple machine learning models. The application applies Logistic Regression, Support Vector Classification (SVC), Random Forest, Gradient Boosting, and Decision Tree algorithms on the Diabetes Prediction dataset from Kaggle to offer comprehensive predictive insights.
