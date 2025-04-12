@@ -1,8 +1,21 @@
 # Diabetes Prediction Dashboard
 
+# Contributors
+## 1- Amandeep Yadav (*Team Lead*)
+## 2- Aditya Chug (*Team Member*)
+## 2- Ruchit Vaze (*Team Member*)
+
 ## Overview
 This dashboard provides an interactive interface for predicting diabetes risk using multiple machine learning models. The application applies Logistic Regression, Support Vector Classification (SVC), Random Forest, Gradient Boosting, and Decision Tree algorithms on the Diabetes Prediction dataset from Kaggle to offer comprehensive predictive insights.
 [Dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
+
+## Tech Stactks
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib&logoColor=white)
 
 ## Features
 - **Multi-model Predictions**: Compare predictions from five different machine learning models
