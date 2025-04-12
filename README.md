@@ -39,7 +39,7 @@ The dashboard uses the Diabetes Prediction dataset from Kaggle, which includes v
 1. Clone the repository:
    ```
    git clone https://github.com/EmVegito/hackathon-diabetesPrediction.git
-   cd diabetes-prediction-dashboard
+   cd hackathon-diabetesPrediction
    ```
 
 2. Create and activate a virtual environment (recommended):
@@ -78,7 +78,7 @@ diabetes-prediction-dashboard/
 │       ├──best_dtModel.pkl
 │       ├──best_gbModel.pkl
 │       ├──best_lrModel.pkl
-│       ├──best_model.pkl
+│       ├──best_model.pkl           # Based On AUC ROC Curve
 │       ├──best_rfModel.pkl
 │       ├──best_svcModel.pkl
 │   ├── default_models              # Model with default hyperparameters
@@ -98,6 +98,7 @@ diabetes-prediction-dashboard/
 │   └── svc_model.py
 │   └── util.py                     # Other functions like save_model
 ├── notebooks/
+│   ├── diabetes.csv                # Original Dataset
 │   ├── preprocessed.ipynb          # Jupyter notebooks for exploration and feature engineering
 ├── requirements.txt                # Project dependencies
 └── README.md                       # This file

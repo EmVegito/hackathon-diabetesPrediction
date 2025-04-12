@@ -1,3 +1,5 @@
 .venv/
 
-app/*.csv
+venv/
+
+__pycache__/
