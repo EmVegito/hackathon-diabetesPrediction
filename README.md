@@ -2,7 +2,7 @@
 
 ## Overview
 This dashboard provides an interactive interface for predicting diabetes risk using multiple machine learning models. The application applies Logistic Regression, Support Vector Classification (SVC), Random Forest, Gradient Boosting, and Decision Tree algorithms on the Diabetes Prediction dataset from Kaggle to offer comprehensive predictive insights.
-(`https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database`)
+[Dataset](https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database)
 
 ## Features
 - **Multi-model Predictions**: Compare predictions from five different machine learning models
@@ -53,14 +53,16 @@ The dashboard uses the Diabetes Prediction dataset from Kaggle, which includes v
    pip install -r requirements.txt
    ```
 
-## Usage
-
 ### Starting the Dashboard
 Run the following command in your terminal from the parent directory:
 ```
 streamlit run app/model_dashboard.py
 ```
 Then open your web browser and navigate to `http://localhost:8050` (or the port specified in the terminal output).
+
+*Note*
+The dashboard is live on:
+[Dashboard](https://hackathon-diabetesprediction-a7yzpwvynsqogqwnmynwsh.streamlit.app/)
 
 ### Making Predictions
 1. Enter patient data in the input fields
